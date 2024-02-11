@@ -88,7 +88,7 @@ public class AuctionsController : ControllerBase
         auction.Item.Mileage = updateAuctionDto.Mileage ?? auction.Item.Mileage;
         auction.Item.Year = updateAuctionDto.Year ?? auction.Item.Year;
 
-        await _publishEndpoint.Publish(_mapper.Map<AuctionUpdated>(auction));
+        await _publishEndpoint.Publish(_mapper.Map<AuctionUpdated>(auction.Item));
 
         var result = await _context.SaveChangesAsync() > 0;
         if (result) return Ok();
