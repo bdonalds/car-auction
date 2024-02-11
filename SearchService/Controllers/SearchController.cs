@@ -17,6 +17,7 @@ public class SearchController : ControllerBase
 
         if (!string.IsNullOrEmpty(searchParams.SearchTerm))
         {
+            System.Console.WriteLine($"searchParams.SearchTerm: {searchParams.SearchTerm}");
             query.Match(Search.Full, searchParams.SearchTerm).SortByTextScore();
         }
 
